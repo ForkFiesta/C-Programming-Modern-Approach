@@ -23,6 +23,6 @@ int main(void){
 
     }
 
-    printf(pm ? "Equivalent 12-hour time: %d:%.2d PM\n": "Equivalent 12-hour time: %d:.2d AM\n", hour_12, minutes);
+    printf(pm ? "Equivalent 12-hour time: %d:%.2d PM\n": "Equivalent 12-hour time: %d:%.2d AM\n", hour_12, minutes);
 
 }
