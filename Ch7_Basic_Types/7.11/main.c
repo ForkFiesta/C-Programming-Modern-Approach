@@ -8,7 +8,7 @@ int main(){
     char ch;
 
     printf("Enter a first and a last name: ");
-    ch = getchar();
+    ch = getchar(); //Gets first character
     if (ch != ' '){ //checks if first character is blank space
         first_letter = ch; // if it is not white space it assigns the first character to first_letter
     }else{ 
