@@ -11,16 +11,16 @@ int main(void){
     if (taxable_income < 750.00f){
         taxes_owed = .01f*taxable_income;
     }
-    else if (750.00f<=taxable_income<2250.00f){
+    else if (750.00f<=taxable_income && taxable_income<2250.00f){
         taxes_owed = 7.50f + (taxable_income-750.00f)*.02f;
     }
-    else if (2250.00f<=taxable_income<3750.00f){
+    else if (2250.00f<=taxable_income && taxable_income<3750.00f){
         taxes_owed = 37.50f + (taxable_income-2250.00f)*.03f;
     }
-    else if (3750.00f<=taxable_income<5250.00f){
+    else if (3750.00f<=taxable_income && taxable_income<5250.00f){
         taxes_owed = 82.50f + (taxable_income-3750.00f)*.04f;
 
-    }else if (5250.00f <= taxable_income < 7000.00f){
+    }else if (5250.00f <= taxable_income && taxable_income < 7000.00f){
         taxes_owed = 142.50f + (taxable_income-5250.00f)*.05f;
     }
     else{
