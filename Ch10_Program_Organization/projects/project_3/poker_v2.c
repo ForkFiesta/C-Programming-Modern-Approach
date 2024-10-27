@@ -14,11 +14,18 @@ void analyze_hand(int hand[10]);
 
 void print_result(void);
 
+int hash_function(int rank, int suit);
+
+int hash_function(int rank, int suit){
+    return suit*13 + rank;
+}
+
 void read_cards(int hand[10]){
     char ch, rank_ch, suit_ch;
     int rank, suit;
     int rank_index = 0;
     bool bad_card;
+    bool card_exists[52];
 
     int cards_read = 0;
     bool duplicate_card = false;
@@ -27,7 +34,7 @@ void read_cards(int hand[10]){
 
     while (cards_read < NUM_CARDS){
         bad_card = false; // default bad card to false
-
+        
         printf("Enter a card: ");
         rank_ch = getchar(); //get first character of input
         
@@ -98,15 +105,21 @@ void read_cards(int hand[10]){
         default:
             bad_card = true;
         }
+        int card_hash = hash_function(rank,suit);
+
+        if(card_exists[card_hash]){
+            printf("Card Rank: %d\tCard Suit: %d\tHash:%d already exists\n", rank, suit, card_hash);
+            duplicate_card = true;
+        }else{
+            card_exists[card_hash] = true;
+            duplicate_card = false;
+        }
 
         while((ch=getchar()) != '\n') { // look for spaces between the suit and rank
             if (ch != ' ') bad_card = true;
         }
 
-        for (int i = 0; i<10; i+=2){
-            if(hand[i] == rank && hand[i+1] == suit) duplicate_card = true;
-        }
-
+       
         if (bad_card) {
             printf("Bad Card; ignored.\n");
         }
@@ -236,9 +249,12 @@ void print_result(void){
 }
 
 int main(void){
-    
+    int hand[10];
     for(;;){
-        int hand[10] = {0};
+        
+        for (int i = 0; i<10; i++){
+            hand[i] = 0;
+        }
         read_cards(hand);
         analyze_hand(hand);
         print_result();
