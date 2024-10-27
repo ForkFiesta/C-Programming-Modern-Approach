@@ -25,18 +25,11 @@ void repeating_function(void){
             idx++;
 
         }
-
     }
     *p = '\0';
     q = p;
     p = &message[0];
     q--;
-
-    // if(p<q){
-    //     printf("P is less than q\n");
-    // }
-
-
 
     for(;p<&message[idx] && q>=&message[0] && p<q;){
         if (tolower(*p) == tolower(*q)){
