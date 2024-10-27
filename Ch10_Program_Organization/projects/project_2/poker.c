@@ -34,12 +34,12 @@ void read_cards(int num_in_rank[], int num_in_suit[]){
     }
 
     while (cards_read < NUM_CARDS){
-        bad_card = false;
+        bad_card = false; // default bad card to false
 
         printf("Enter a card: ");
-        rank_ch = getchar();
+        rank_ch = getchar(); //get first character of input
         
-        switch (rank_ch)
+        switch (rank_ch) // evaluate it
         {
         case '0':
             exit(EXIT_SUCCESS);
@@ -84,7 +84,7 @@ void read_cards(int num_in_rank[], int num_in_suit[]){
             break;
         
         default:
-            bad_card = true;
+            bad_card = true; //if it's not a good value throw badcard
         }
 
         suit_ch = getchar();
@@ -107,7 +107,7 @@ void read_cards(int num_in_rank[], int num_in_suit[]){
             bad_card = true;
         }
 
-        while((ch=getchar()) != '\n') {
+        while((ch=getchar()) != '\n') { // look for spaces between the suit and rank
             if (ch != ' ') bad_card = true;
         }
 
