@@ -26,30 +26,70 @@ void clear_digits_array(void){
 
 void process_digit(int digit, int position){
     int segment[7];
+    // printf("Printing Segments for %d:\n", digit);
     for (int i = 0 ; i < 7; i++){
         segment[i] = segments[digit][i];
+        // printf("%d ", segment[i]);
     }
-    for (int i = 0; i < 7; i++){
+
+    int starting_position = position*4;
+
+    for (int i = 0 ; i < 7; i++){
         switch (segment[i])
         {
-        case 0:
-            break;
         case 1:
-            if (i == 0 || i==6 ||i==3){
-                digits[i][position+1]='_';
+            if(i == 0){
+                digits[0][starting_position+1] = '_';
             }
-            else if (i == 1 || i == 2){
-                digits[i][position+2]='|';
+            else if (i ==1 || i == 2){
+                digits[i][starting_position+2] = '|';
             }
-            else if(i==4 || i == 5){
-                digits[i][position]='|';
+            else if (i == 3){
+                digits[2][starting_position+1] = '_';
+            }
+            else if (i == 4){
+                digits[2][starting_position] = '|';
+            }
+            else if(i ==5){
+                digits[1][starting_position]= '|';
+            }
+            else if(i == 6){
+                digits[1][starting_position+1]='_';
             }
             break;
-            
+
+        
         default:
             break;
         }
     }
+
+    
+
+
+    // for (int i = 0; i < 7; i++){
+    //     printf("%d, ", segment[i]);
+    //     switch (segment[i])
+    //     {
+    //     case 0:
+    //         break;
+    //     case 1:
+    //         if (i == 0 || i==6 ||i==3){
+    //             digits[i][starting_position+1]='_';
+    //         }
+    //         else if (i == 1 || i == 2){
+    //             digits[i][starting_position+2]='|';
+    //         }
+    //         else if(i==4 || i == 5){
+    //             digits[i][starting_position]='|';
+    //         }
+    //         break;
+            
+    //     default:
+    //         break;
+    //     }
+    // }
+    // printf("\n");
    
 }
 
@@ -66,53 +106,48 @@ void print_digits_array(void){
 
 int main(){
     int num_array[MAX_DIGITS] = {0};
+
+    for(;;){
+    for (int i = 0; i<MAX_DIGITS; i++){
+        num_array[i]=0;
+    }
     int array_index = 0;
     char ch;
     clear_digits_array();
-    printf("Enter a number: ");
+    printf("Enter a number (Max of Ten Digits): ");
     while((ch=getchar())!='\n'){
         bool bad_number = false;
         switch (ch)
         {
-        case 0:
+        case '0':
             num_array[array_index++] = 0;
-            bad_number = false;
             break;
-        case 1:
+        case '1':
             num_array[array_index++] = 1;
-            bad_number = false;
             break;
-        case 2:
+        case '2':
             num_array[array_index++] = 2;
-            bad_number = false;
             break;
-        case 3:
+        case '3':
             num_array[array_index++] = 3;
-            bad_number = false;
             break;
-        case 4:
+        case '4':
             num_array[array_index++] = 4;
-            bad_number = false;
             break;
-        case 5:
+        case '5':
             num_array[array_index++] = 5;
-            bad_number = false;
             break;
-        case 6:
+        case '6':
             num_array[array_index++] =6;
-            bad_number = false;
             break;
-        case 7:
+        case '7':
             num_array[array_index++]=7;
-            bad_number = false;
             break;
-        case 8:
+        case '8':
             num_array[array_index++]=8;
-            bad_number = false;
             break;
-        case 9:
+        case '9':
             num_array[array_index++] = 9;
-            bad_number = false;
             break;
         default:
             bad_number = true;
@@ -120,19 +155,20 @@ int main(){
         }
         if (bad_number){
             printf("Not a number. Ignoring %c\n", ch);
-        }else{
-            printf("Read digit %c\n", ch);
         }
 
 
     }
 
 
-    for (int i = 0; i < array_index+1; i++){
+    for (int i = 0; i < array_index; i++){
         process_digit(num_array[i], i);
     }
 
     print_digits_array();
+        
+    }
+    
 
 
 
