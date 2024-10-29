@@ -16,6 +16,8 @@ int main(){
         printf("%d. %d\n", i, arr[i]);
     }
 
+    free(arr);
+
 
     return 0;
 }
