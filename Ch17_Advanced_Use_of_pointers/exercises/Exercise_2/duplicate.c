@@ -8,10 +8,10 @@ char *duplicate(char *str){
     char *p = str;
     int length = 0;
     while((*p++)!='\0') length++; 
-    char *new_string = malloc((sizeof(char)*length)+1);
+    char *new_string = malloc((sizeof(char)*length));
     if (new_string == NULL){
         printf("Memory failure\n");
-        exit(EXIT_FAILURE);
+        return new_string;
     }
     
     for(char *q=new_string, *p=&str[0]; (*p)!='\0'; (*q++)=(*p++));
@@ -25,11 +25,13 @@ int main(void){
     char *p = &str[0];
 
     char *new_word = duplicate(p);
-    while(*new_word!='\0'){
-        putchar(*new_word++);
+    char *q = &new_word[0];
+    while(*q!='\0'){
+        putchar(*q++);
     }
     printf("\n");
     free(new_word);
+    printf("New_word free'd correctly\n");
 
     return 0;
 }
