@@ -25,10 +25,9 @@ int main(void){
     char *p = &str[0];
 
     char *new_word = duplicate(p);
-    char *q = &new_word[0];
-    while(*q!='\0'){
-        putchar(*q++);
-    }
+    char *q = new_word;
+    printf("%s", q);
+    
     printf("\n");
     free(new_word);
     printf("New_word free'd correctly\n");
