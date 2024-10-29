@@ -22,7 +22,7 @@ bool push(node **list, int data){
     new_node->next = *list; // this was my issue on the previous version.
     new_node->data = data;
     *list = new_node;
-    printf("Successfully pushed %d\n", data);
+    // printf("Successfully pushed %d\n", data);
     return true;
 }
 
@@ -38,7 +38,7 @@ void empty(node **list){
         free(temp);
     }
     if(isEmpty(*list)){
-        printf("Freed all elements in list\n");
+        // printf("Freed all elements in list\n");
     }
 
 }
@@ -62,14 +62,14 @@ int pop(node **list){
 //tests
 
 void run_all_tests(){
-    printf("Running all tests ...\n");
+    printf("\033[1;33mRunning all tests ...\033[0m\n");
     test_isEmpty_init();
     test_push();
     test_isEmpty();
     test_pop();
     test_empty();
     test_list_reusability();
-    printf("All tests passed successfully!\n");
+    printf("\033[1;32mAll tests passed successfully!\033[0m\n");
 }
 
 void test_isEmpty_init(){

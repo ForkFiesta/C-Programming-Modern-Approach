@@ -9,7 +9,7 @@
 int main(){
 
     run_all_tests();
-    printf("All tests completed.\n");
+    printf("\033[1;32mAll tests completed.\033[0m\n");
     
 
 
